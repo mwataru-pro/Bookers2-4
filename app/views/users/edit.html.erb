@@ -1,0 +1,30 @@
+<h1>User info</h1>
+
+<% if @user.errors.any? %>
+   <h3>
+    <%= @user.errors.count %>errors prohibited this book from being saved:
+   </h3>
+   <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+   </ul>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+
+<div class="field">
+
+ <label for="user_name">Name</label>
+ <%= f.text_field :name %>
+ <br>
+ <label for="user_image">image</label>
+ <%= f.attachment_field :profile_image %>
+ <br>
+ <label for="user_introduction">introduction</label>
+ <%= f.text_area :introduction %>
+
+ <%= f.submit 'Update User' %>
+
+</div>
+<% end %>
